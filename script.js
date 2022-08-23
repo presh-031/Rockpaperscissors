@@ -43,8 +43,17 @@ function playRound(playerSelection, computerSelection) {
   return result;
 }
 function game() {
-  for (let i = 0; i < 5; i++) {
-    console.log(playRound(prompt(), getComputerChoice()));
+  // for (let i = 0; i < 5; i++) {
+  //   console.log(playRound(prompt(), getComputerChoice()));
+  // }
+  const btns = Array.from(document.querySelectorAll('button'));
+  console.log(btns);
+
+  for (let i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', e => {
+      console.log(e.target);
+      console.log(playRound(e.target.textContent, getComputerChoice()));
+    });
   }
 }
 game();
