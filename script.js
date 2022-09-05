@@ -1,7 +1,11 @@
 'use strict';
 const gameItems = ['rock', 'paper', 'scissors'];
 let computerChoice = '';
-let score = 0;
+let playerScore = 0;
+let computerScore = 0;
+let playerScore_El = document.querySelector('.player-score');
+let computerScore_El = document.querySelector('.computer-score');
+
 // console.log(score);
 
 function getComputerChoice() {
@@ -18,37 +22,59 @@ function playRound(finalPlayerSelection, computerSelection) {
   if (finalPlayerSelection === 'paper') {
     if (computerSelection === gameItems[0]) {
       result.textContent = `You Win! 🎉 ${finalPlayerSelection} beats ${computerSelection}`;
-      score += 1;
-      console.log(score);
-      document.querySelector('.score').textContent = score;
+      playerScore += 1;
+      playerScore_El.innerHTML = playerScore;
+      // console.log(playerScore);
     } else if (computerSelection === gameItems[2]) {
       result.textContent = `You Lose!😖 ${computerSelection} beats ${finalPlayerSelection}`;
-      score -= 1;
+
+      computerScore += 1;
+      computerScore_El.innerHTML = computerScore;
     } else {
       result.textContent = `Draw! ⛔ ${computerSelection} = ${finalPlayerSelection}`;
-      score = score;
+
+      playerScore = playerScore;
+      computerScore = computerScore;
+      playerScore_El.innerHTML = playerScore;
+      computerScore_El.innerHTML = computerScore;
     }
   } else if (finalPlayerSelection === 'rock') {
     if (computerSelection === gameItems[2]) {
       result.textContent = `You Win!🎉 ${finalPlayerSelection} beats ${computerSelection}`;
-      score += 1;
+
+      playerScore += 1;
+      playerScore_El.innerHTML = playerScore;
     } else if (computerSelection === gameItems[1]) {
-      score -= 1;
       result.textContent = `You Lose!😖 ${computerSelection} beats ${finalPlayerSelection}`;
+
+      computerScore += 1;
+      computerScore_El.innerHTML = computerScore;
     } else {
       result.textContent = `Draw!⛔ ${computerSelection} = ${finalPlayerSelection}`;
-      score = score;
+
+      playerScore = playerScore;
+      computerScore = computerScore;
+      playerScore_El.innerHTML = playerScore;
+      computerScore_El.innerHTML = computerScore;
     }
   } else if (finalPlayerSelection === 'scissors') {
     if (computerSelection === gameItems[1]) {
       result.textContent = `You Win! ${finalPlayerSelection} beats ${computerSelection}`;
-      score += 1;
+
+      playerScore += 1;
+      playerScore_El.innerHTML = playerScore;
     } else if (computerSelection === gameItems[0]) {
       result.textContent = `You Lose! ${computerSelection} beats ${finalPlayerSelection}`;
-      score -= 1;
+
+      computerScore += 1;
+      computerScore_El.innerHTML = computerScore;
     } else {
       result.textContent = `Draw!⛔ ${computerSelection} = ${finalPlayerSelection}`;
-      score = score;
+
+      playerScore = playerScore;
+      computerScore = computerScore;
+      playerScore_El.innerHTML = playerScore;
+      computerScore_El.innerHTML = computerScore;
     }
   } else {
     result.textContent = `Invalid Selection. Choose either "rock", "paper" or "scissors".`;
