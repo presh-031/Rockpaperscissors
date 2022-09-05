@@ -16,7 +16,14 @@ function game() {
   for (let i = 0; i < btns.length; i++) {
     btns[i].addEventListener('click', e => {
       // console.log(e.target.textContent);
-      playRound(e.target.textContent, getComputerChoice());
+      const playerr = e.target.textContent;
+      const computerr = getComputerChoice();
+      showPlayerSelection(playerr);
+      showComputerSelection('?');
+      setTimeout(() => {
+        showComputerSelection(computerr);
+        playRound(playerr, computerr);
+      }, 1000);
     });
   }
 }
@@ -28,8 +35,8 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  showPlayerSelection(playerSelection);
-  showComputerSelection(computerSelection);
+  // showPlayerSelection(playerSelection);
+  // showComputerSelection(computerSelection);
 
   if (playerSelection === '✋') {
     if (computerSelection === gameItems[0]) {
