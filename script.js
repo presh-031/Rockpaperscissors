@@ -7,6 +7,9 @@ let playerScore_El = document.querySelector('.player-score');
 let computerScore_El = document.querySelector('.computer-score');
 let result = document.querySelector('.results');
 
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+
 game();
 
 function game() {
@@ -23,7 +26,7 @@ function game() {
       setTimeout(() => {
         showComputerSelection(computerr);
         playRound(playerr, computerr);
-      }, 1000);
+      }, 500);
     });
   }
 }
@@ -101,7 +104,7 @@ function playRound(playerSelection, computerSelection) {
 
   // Tracking winner
   if (playerScore === 5 || computerScore === 5) {
-    showModal();
+    showModal(playerScore > computerScore ? 'won...' : 'lost...');
   }
 }
 
@@ -115,10 +118,19 @@ function showPlayerSelection(playerSelection) {
   player.innerHTML = playerSelection;
 }
 // Show modal when anyone wins
-const modal = document.querySelector('.modal');
-const overlay = document.querySelector('.overlay');
-function showModal() {
-  console.log('oya');
+function showModal(str) {
   overlay.classList.remove('hidden');
   modal.classList.remove('hidden');
+  document.querySelector('.modal-str').innerHTML = str;
+
+  playAgain();
+}
+
+// Play again when play-again btn is clicked
+function playAgain() {
+  const playAgainBtn = document.querySelector('.play-again');
+  playAgainBtn.addEventListener('click', () => {
+    overlay.classList.add('hidden');
+    modal.classList.add('hidden');
+  });
 }
