@@ -1,75 +1,87 @@
 'use strict';
-const gameItems = ['rock', 'paper', 'scissors'];
-let computerChoice = '';
+const gameItems = ['✊', '✋', '✌️'];
+// let computerChoice = '';
 let playerScore = 0;
 let computerScore = 0;
 let playerScore_El = document.querySelector('.player-score');
 let computerScore_El = document.querySelector('.computer-score');
+let result = document.querySelector('.results');
 
-// console.log(score);
+game();
+
+function game() {
+  const btns = Array.from(document.querySelectorAll('button'));
+  console.log(btns);
+
+  for (let i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', e => {
+      // console.log(e.target.textContent);
+      playRound(e.target.textContent, getComputerChoice());
+    });
+  }
+}
 
 function getComputerChoice() {
   const randomNum = Math.trunc(Math.random() * 3);
-  computerChoice = gameItems[randomNum];
+  const computerChoice = gameItems[randomNum];
   return computerChoice;
 }
-console.log(getComputerChoice());
 
-function playRound(finalPlayerSelection, computerSelection) {
-  let result = document.querySelector('.results');
+function playRound(playerSelection, computerSelection) {
+  showPlayerSelection(playerSelection);
+  showComputerSelection(computerSelection);
 
-  // let finalPlayerSelection = playerSelection.toLowerCase();
-  if (finalPlayerSelection === 'paper') {
+  if (playerSelection === '✋') {
     if (computerSelection === gameItems[0]) {
-      result.textContent = `You Win! 🎉 ${finalPlayerSelection} beats ${computerSelection}`;
+      result.textContent = `You Win! 🎉 paper beats ${computerSelection}`;
+
       playerScore += 1;
       playerScore_El.innerHTML = playerScore;
-      // console.log(playerScore);
     } else if (computerSelection === gameItems[2]) {
-      result.textContent = `You Lose!😖 ${computerSelection} beats ${finalPlayerSelection}`;
+      result.textContent = `You Lose!😖 ${computerSelection} beats paper`;
 
       computerScore += 1;
       computerScore_El.innerHTML = computerScore;
     } else {
-      result.textContent = `Draw! ⛔ ${computerSelection} = ${finalPlayerSelection}`;
+      result.textContent = `Draw! ⛔ ${computerSelection} = paper`;
 
       playerScore = playerScore;
       computerScore = computerScore;
       playerScore_El.innerHTML = playerScore;
       computerScore_El.innerHTML = computerScore;
     }
-  } else if (finalPlayerSelection === 'rock') {
+  } else if (playerSelection === '✊') {
     if (computerSelection === gameItems[2]) {
-      result.textContent = `You Win!🎉 ${finalPlayerSelection} beats ${computerSelection}`;
+      result.textContent = `You Win!🎉 rock beats ${computerSelection}`;
 
       playerScore += 1;
       playerScore_El.innerHTML = playerScore;
     } else if (computerSelection === gameItems[1]) {
-      result.textContent = `You Lose!😖 ${computerSelection} beats ${finalPlayerSelection}`;
+      result.textContent = `You Lose!😖 ${computerSelection} beats rock`;
 
       computerScore += 1;
       computerScore_El.innerHTML = computerScore;
     } else {
-      result.textContent = `Draw!⛔ ${computerSelection} = ${finalPlayerSelection}`;
+      result.textContent = `Draw!⛔ ${computerSelection} = rock`;
 
       playerScore = playerScore;
       computerScore = computerScore;
       playerScore_El.innerHTML = playerScore;
       computerScore_El.innerHTML = computerScore;
     }
-  } else if (finalPlayerSelection === 'scissors') {
+  } else if (playerSelection === '✌️') {
     if (computerSelection === gameItems[1]) {
-      result.textContent = `You Win! ${finalPlayerSelection} beats ${computerSelection}`;
+      result.textContent = `You Win! scissors beats ${computerSelection}`;
 
       playerScore += 1;
       playerScore_El.innerHTML = playerScore;
     } else if (computerSelection === gameItems[0]) {
-      result.textContent = `You Lose! ${computerSelection} beats ${finalPlayerSelection}`;
+      result.textContent = `You Lose! ${computerSelection} beats scissors`;
 
       computerScore += 1;
       computerScore_El.innerHTML = computerScore;
     } else {
-      result.textContent = `Draw!⛔ ${computerSelection} = ${finalPlayerSelection}`;
+      result.textContent = `Draw!⛔ ${computerSelection} = scissors`;
 
       playerScore = playerScore;
       computerScore = computerScore;
@@ -79,17 +91,16 @@ function playRound(finalPlayerSelection, computerSelection) {
   } else {
     result.textContent = `Invalid Selection. Choose either "rock", "paper" or "scissors".`;
   }
-  return result;
 }
-function game() {
-  const btns = Array.from(document.querySelectorAll('button'));
-  console.log(btns);
 
-  for (let i = 0; i < btns.length; i++) {
-    btns[i].addEventListener('click', e => {
-      console.log(e.target.textContent.toLowerCase());
-      playRound(e.target.textContent.toLowerCase(), getComputerChoice());
-    });
-  }
+function showComputerSelection(computerSelection) {
+  const computer = document.querySelector('.computer-selection');
+  computer.innerHTML = computerSelection;
 }
-game();
+
+function showPlayerSelection(playerSelection) {
+  const player = document.querySelector('.player-selection');
+  player.innerHTML = playerSelection;
+}
+// Tracking first-to-five
+console.log(playerScore);
