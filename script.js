@@ -5,6 +5,7 @@ let playerScore = 0;
 let computerScore = 0;
 let playerScore_El = document.querySelector('.player-score');
 let computerScore_El = document.querySelector('.computer-score');
+let mainResult = document.querySelector('.main-result');
 let result = document.querySelector('.results');
 const rule = 'First to score 5 points wins the game';
 
@@ -45,16 +46,19 @@ function playRound(playerSelection, computerSelection) {
   if (playerSelection === '✋') {
     if (computerSelection === gameItems[0]) {
       result.textContent = `Paper beats rock`;
+      mainResult.textContent = 'You won!';
 
       playerScore += 1;
       playerScore_El.innerHTML = playerScore;
     } else if (computerSelection === gameItems[2]) {
       result.textContent = `Scissors beats paper`;
+      mainResult.textContent = 'You lost!';
 
       computerScore += 1;
       computerScore_El.innerHTML = computerScore;
     } else {
       result.textContent = `Paper ties with paper`;
+      mainResult.textContent = "It's a tie!";
 
       playerScore = playerScore;
       computerScore = computerScore;
@@ -64,16 +68,19 @@ function playRound(playerSelection, computerSelection) {
   } else if (playerSelection === '✊') {
     if (computerSelection === gameItems[2]) {
       result.textContent = `Rock beats scissors`;
+      mainResult.textContent = 'You won!';
 
       playerScore += 1;
       playerScore_El.innerHTML = playerScore;
     } else if (computerSelection === gameItems[1]) {
       result.textContent = `Paper beats rock`;
+      mainResult.textContent = 'You lost!';
 
       computerScore += 1;
       computerScore_El.innerHTML = computerScore;
     } else {
       result.textContent = `Rock ties with rock`;
+      mainResult.textContent = "It's a tie!";
 
       playerScore = playerScore;
       computerScore = computerScore;
@@ -83,16 +90,19 @@ function playRound(playerSelection, computerSelection) {
   } else if (playerSelection === '✌️') {
     if (computerSelection === gameItems[1]) {
       result.textContent = `Scissors beats paper`;
+      mainResult.textContent = 'You won!';
 
       playerScore += 1;
       playerScore_El.innerHTML = playerScore;
     } else if (computerSelection === gameItems[0]) {
       result.textContent = `Rock beats scissors`;
+      mainResult.textContent = 'You lost!';
 
       computerScore += 1;
       computerScore_El.innerHTML = computerScore;
     } else {
       result.textContent = `Scissors ties with scissors`;
+      mainResult.textContent = "It's a tie!";
 
       playerScore = playerScore;
       computerScore = computerScore;
