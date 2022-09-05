@@ -1,7 +1,7 @@
 'use strict';
 const gameItems = ['rock', 'paper', 'scissors'];
 let computerChoice = '';
-let score = Number(document.querySelector('.score').textContent);
+let score = 0;
 // console.log(score);
 
 function getComputerChoice() {
@@ -9,17 +9,18 @@ function getComputerChoice() {
   computerChoice = gameItems[randomNum];
   return computerChoice;
 }
-// console.log(getComputerChoice());
+console.log(getComputerChoice());
 
-function playRound(playerSelection, computerSelection) {
-  // const result = `You Lose! ${playerSelection.toLowerCase()} beats ${computerSelection}`;
+function playRound(finalPlayerSelection, computerSelection) {
   let result = document.querySelector('.results');
 
-  let finalPlayerSelection = playerSelection.toLowerCase();
+  // let finalPlayerSelection = playerSelection.toLowerCase();
   if (finalPlayerSelection === 'paper') {
     if (computerSelection === gameItems[0]) {
       result.textContent = `You Win! 🎉 ${finalPlayerSelection} beats ${computerSelection}`;
       score += 1;
+      console.log(score);
+      document.querySelector('.score').textContent = score;
     } else if (computerSelection === gameItems[2]) {
       result.textContent = `You Lose!😖 ${computerSelection} beats ${finalPlayerSelection}`;
       score -= 1;
@@ -60,8 +61,8 @@ function game() {
 
   for (let i = 0; i < btns.length; i++) {
     btns[i].addEventListener('click', e => {
-      console.log(e.target);
-      playRound(e.target.textContent, getComputerChoice());
+      console.log(e.target.textContent.toLowerCase());
+      playRound(e.target.textContent.toLowerCase(), getComputerChoice());
     });
   }
 }
