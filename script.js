@@ -10,7 +10,7 @@ let result = document.querySelector('.results');
 game();
 
 function game() {
-  const btns = Array.from(document.querySelectorAll('button'));
+  const btns = Array.from(document.querySelectorAll('.game-btns'));
   console.log(btns);
 
   for (let i = 0; i < btns.length; i++) {
@@ -98,6 +98,11 @@ function playRound(playerSelection, computerSelection) {
   } else {
     result.textContent = `Invalid Selection. Choose either "rock", "paper" or "scissors".`;
   }
+
+  // Tracking winner
+  if (playerScore === 5 || computerScore === 5) {
+    showModal();
+  }
 }
 
 function showComputerSelection(computerSelection) {
@@ -109,5 +114,11 @@ function showPlayerSelection(playerSelection) {
   const player = document.querySelector('.player-selection');
   player.innerHTML = playerSelection;
 }
-// Tracking first-to-five
-console.log(playerScore);
+// Show modal when anyone wins
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+function showModal() {
+  console.log('oya');
+  overlay.classList.remove('hidden');
+  modal.classList.remove('hidden');
+}
