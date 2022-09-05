@@ -6,6 +6,7 @@ let computerScore = 0;
 let playerScore_El = document.querySelector('.player-score');
 let computerScore_El = document.querySelector('.computer-score');
 let result = document.querySelector('.results');
+const rule = 'First to score 5 points wins the game';
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
@@ -43,17 +44,17 @@ function playRound(playerSelection, computerSelection) {
 
   if (playerSelection === '✋') {
     if (computerSelection === gameItems[0]) {
-      result.textContent = `You Win! 🎉 paper beats ${computerSelection}`;
+      result.textContent = `Paper beats rock`;
 
       playerScore += 1;
       playerScore_El.innerHTML = playerScore;
     } else if (computerSelection === gameItems[2]) {
-      result.textContent = `You Lose!😖 ${computerSelection} beats paper`;
+      result.textContent = `Scissors beats paper`;
 
       computerScore += 1;
       computerScore_El.innerHTML = computerScore;
     } else {
-      result.textContent = `Draw! ⛔ ${computerSelection} = paper`;
+      result.textContent = `Paper ties with paper`;
 
       playerScore = playerScore;
       computerScore = computerScore;
@@ -62,17 +63,17 @@ function playRound(playerSelection, computerSelection) {
     }
   } else if (playerSelection === '✊') {
     if (computerSelection === gameItems[2]) {
-      result.textContent = `You Win!🎉 rock beats ${computerSelection}`;
+      result.textContent = `Rock beats scissors`;
 
       playerScore += 1;
       playerScore_El.innerHTML = playerScore;
     } else if (computerSelection === gameItems[1]) {
-      result.textContent = `You Lose!😖 ${computerSelection} beats rock`;
+      result.textContent = `Paper beats rock`;
 
       computerScore += 1;
       computerScore_El.innerHTML = computerScore;
     } else {
-      result.textContent = `Draw!⛔ ${computerSelection} = rock`;
+      result.textContent = `Rock ties with rock`;
 
       playerScore = playerScore;
       computerScore = computerScore;
@@ -81,17 +82,17 @@ function playRound(playerSelection, computerSelection) {
     }
   } else if (playerSelection === '✌️') {
     if (computerSelection === gameItems[1]) {
-      result.textContent = `You Win! scissors beats ${computerSelection}`;
+      result.textContent = `Scissors beats paper`;
 
       playerScore += 1;
       playerScore_El.innerHTML = playerScore;
     } else if (computerSelection === gameItems[0]) {
-      result.textContent = `You Lose! ${computerSelection} beats scissors`;
+      result.textContent = `Rock beats scissors`;
 
       computerScore += 1;
       computerScore_El.innerHTML = computerScore;
     } else {
-      result.textContent = `Draw!⛔ ${computerSelection} = scissors`;
+      result.textContent = `Scissors ties with scissors`;
 
       playerScore = playerScore;
       computerScore = computerScore;
@@ -105,6 +106,10 @@ function playRound(playerSelection, computerSelection) {
   // Tracking winner
   if (playerScore === 5 || computerScore === 5) {
     showModal(playerScore > computerScore ? 'won...' : 'lost...');
+    playerScore = 0;
+    computerScore = 0;
+    playerScore_El.innerHTML = playerScore;
+    computerScore_El.innerHTML = computerScore;
   }
 }
 
@@ -132,5 +137,6 @@ function playAgain() {
   playAgainBtn.addEventListener('click', () => {
     overlay.classList.add('hidden');
     modal.classList.add('hidden');
+    result.textContent = rule;
   });
 }
