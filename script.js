@@ -1,12 +1,16 @@
 'use strict';
 const gameItems = ['✊', '✋', '✌️'];
+const computer = document.querySelector('.computer-selection');
+const player = document.querySelector('.player-selection');
+
 let playerScore = 0;
 let computerScore = 0;
 const playerScore_El = document.querySelector('.player-score');
 const computerScore_El = document.querySelector('.computer-score');
+
 const mainResult = document.querySelector('.main-result');
-const mainRule = 'Choose your weapon';
 const result = document.querySelector('.results');
+const mainRule = 'Choose your weapon';
 const rule = 'First to score 5 points wins the game';
 
 const modal = document.querySelector('.modal');
@@ -16,18 +20,15 @@ game();
 
 function game() {
   const btns = Array.from(document.querySelectorAll('.game-btns'));
-  console.log(btns);
 
   for (let i = 0; i < btns.length; i++) {
     btns[i].addEventListener('click', e => {
-      // console.log(e.target.textContent);
-      const playerr = e.target.textContent;
-      const computerr = getComputerChoice();
-      showPlayerSelection(playerr);
+      showPlayerSelection(e.target.textContent);
       showComputerSelection('?');
+      // Show computer selection and playround after 500ms
       setTimeout(() => {
-        showComputerSelection(computerr);
-        playRound(playerr, computerr);
+        showComputerSelection(getComputerChoice());
+        playRound(e.target.textContent, getComputerChoice());
       }, 500);
     });
   }
@@ -43,19 +44,19 @@ function playRound(playerSelection, computerSelection) {
   if (playerSelection === '✋') {
     if (computerSelection === gameItems[0]) {
       result.textContent = `Paper beats rock`;
-      mainResult.textContent = 'You won!';
+      mainResult.textContent = `You won!`;
 
       playerScore += 1;
       playerScore_El.innerHTML = playerScore;
     } else if (computerSelection === gameItems[2]) {
       result.textContent = `Scissors beats paper`;
-      mainResult.textContent = 'You lost!';
+      mainResult.textContent = `You lost!`;
 
       computerScore += 1;
       computerScore_El.innerHTML = computerScore;
     } else {
       result.textContent = `Paper ties with paper`;
-      mainResult.textContent = "It's a tie!";
+      mainResult.textContent = `It's a tie!`;
 
       playerScore = playerScore;
       computerScore = computerScore;
@@ -65,19 +66,19 @@ function playRound(playerSelection, computerSelection) {
   } else if (playerSelection === '✊') {
     if (computerSelection === gameItems[2]) {
       result.textContent = `Rock beats scissors`;
-      mainResult.textContent = 'You won!';
+      mainResult.textContent = `You won!`;
 
       playerScore += 1;
       playerScore_El.innerHTML = playerScore;
     } else if (computerSelection === gameItems[1]) {
       result.textContent = `Paper beats rock`;
-      mainResult.textContent = 'You lost!';
+      mainResult.textContent = `You lost!`;
 
       computerScore += 1;
       computerScore_El.innerHTML = computerScore;
     } else {
       result.textContent = `Rock ties with rock`;
-      mainResult.textContent = "It's a tie!";
+      mainResult.textContent = `It's a tie!`;
 
       playerScore = playerScore;
       computerScore = computerScore;
@@ -87,19 +88,19 @@ function playRound(playerSelection, computerSelection) {
   } else if (playerSelection === '✌️') {
     if (computerSelection === gameItems[1]) {
       result.textContent = `Scissors beats paper`;
-      mainResult.textContent = 'You won!';
+      mainResult.textContent = `You won!`;
 
       playerScore += 1;
       playerScore_El.innerHTML = playerScore;
     } else if (computerSelection === gameItems[0]) {
       result.textContent = `Rock beats scissors`;
-      mainResult.textContent = 'You lost!';
+      mainResult.textContent = `You lost!`;
 
       computerScore += 1;
       computerScore_El.innerHTML = computerScore;
     } else {
       result.textContent = `Scissors ties with scissors`;
-      mainResult.textContent = "It's a tie!";
+      mainResult.textContent = `It's a tie!`;
 
       playerScore = playerScore;
       computerScore = computerScore;
@@ -107,6 +108,8 @@ function playRound(playerSelection, computerSelection) {
       computerScore_El.innerHTML = computerScore;
     }
   } else {
+    // This line will never run anymore as Player's selection now comes from ui
+    // During development, I tested logic by taking input from alert popup, hence why it's here.
     result.textContent = `Invalid Selection. Choose either "rock", "paper" or "scissors".`;
   }
 
@@ -120,12 +123,10 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-const computer = document.querySelector('.computer-selection');
 function showComputerSelection(computerSelection) {
   computer.innerHTML = computerSelection;
 }
 
-const player = document.querySelector('.player-selection');
 function showPlayerSelection(playerSelection) {
   player.innerHTML = playerSelection;
 }
