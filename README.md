@@ -20,7 +20,7 @@ Rock Paper Scissors game project
 
 ![screenshot](./Screen%20Shot%202022-09-06%20at%2010.25.56-fullpage.png)
 
-### Built With
+## Built With
 
 - Semantic HTML5 markup
 - SCSS
