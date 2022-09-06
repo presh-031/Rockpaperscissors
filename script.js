@@ -1,6 +1,5 @@
 'use strict';
 const gameItems = ['✊', '✋', '✌️'];
-// let computerChoice = '';
 let playerScore = 0;
 let computerScore = 0;
 let playerScore_El = document.querySelector('.player-score');
