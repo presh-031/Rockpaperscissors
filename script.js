@@ -2,11 +2,11 @@
 const gameItems = ['✊', '✋', '✌️'];
 let playerScore = 0;
 let computerScore = 0;
-let playerScore_El = document.querySelector('.player-score');
-let computerScore_El = document.querySelector('.computer-score');
-let mainResult = document.querySelector('.main-result');
+const playerScore_El = document.querySelector('.player-score');
+const computerScore_El = document.querySelector('.computer-score');
+const mainResult = document.querySelector('.main-result');
 const mainRule = 'Choose your weapon';
-let result = document.querySelector('.results');
+const result = document.querySelector('.results');
 const rule = 'First to score 5 points wins the game';
 
 const modal = document.querySelector('.modal');
