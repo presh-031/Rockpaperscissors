@@ -40,9 +40,6 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  // showPlayerSelection(playerSelection);
-  // showComputerSelection(computerSelection);
-
   if (playerSelection === '✋') {
     if (computerSelection === gameItems[0]) {
       result.textContent = `Paper beats rock`;
@@ -123,13 +120,13 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+const computer = document.querySelector('.computer-selection');
 function showComputerSelection(computerSelection) {
-  const computer = document.querySelector('.computer-selection');
   computer.innerHTML = computerSelection;
 }
 
+const player = document.querySelector('.player-selection');
 function showPlayerSelection(playerSelection) {
-  const player = document.querySelector('.player-selection');
   player.innerHTML = playerSelection;
 }
 // Show modal when anyone wins
@@ -149,5 +146,6 @@ function playAgain() {
     modal.classList.add('hidden');
     mainResult.textContent = mainRule;
     result.textContent = rule;
+    computer.innerHTML = player.innerHTML = '?';
   });
 }

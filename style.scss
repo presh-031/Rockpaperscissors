@@ -61,6 +61,8 @@ header {
   display: flex;
   justify-content: space-around;
   padding: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
 
   div {
     width: 6rem;
@@ -86,7 +88,7 @@ header {
   flex-wrap: wrap;
   button {
     font-size: 3.5rem;
-    border-radius: 5px;
+    border-radius: 10px;
     border: none;
     background-color: $secondary-dark;
     padding: 0.5rem;
