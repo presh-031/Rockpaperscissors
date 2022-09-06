@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 // Colors
 $main-light: rgb(238, 237, 237);
@@ -11,7 +12,7 @@ $primary-yellow: #fdce61;
 
 // fonts
 $subradaya: 'Montserrat Subrayada', sans-serif;
-
+$roboto: 'Roboto', sans-serif;
 *,
 *::before,
 *::after {
@@ -28,7 +29,7 @@ body {
   font-size: 62.5%;
   background-color: $main-dark;
   color: $main-light;
-  font-family: cursive;
+  font-family: $roboto;
   // footer support
   margin-bottom: 100px;
 }
@@ -148,7 +149,7 @@ header {
 // Footer
 footer {
   padding: 1rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
   text-align: center;
   // footer at bottom of page
   position: absolute;
@@ -158,5 +159,14 @@ footer {
   a {
     color: inherit;
     cursor: pointer;
+  }
+  .fa-github {
+    font-size: inherit;
+    cursor: pointer;
+    color: $main-light;
+    transition: transform 0.3s ease-in-out;
+  }
+  .fa-github:hover {
+    transform: rotate(360deg) scale(1.2);
   }
 }
