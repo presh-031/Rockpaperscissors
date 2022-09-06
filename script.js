@@ -23,12 +23,15 @@ function game() {
 
   for (let i = 0; i < btns.length; i++) {
     btns[i].addEventListener('click', e => {
-      showPlayerSelection(e.target.textContent);
+      const playerMain = e.target.textContent;
+      const computerMain = getComputerChoice();
+      showPlayerSelection(playerMain);
       showComputerSelection('?');
+
       // Show computer selection and playround after 500ms
       setTimeout(() => {
-        showComputerSelection(getComputerChoice());
-        playRound(e.target.textContent, getComputerChoice());
+        showComputerSelection(computerMain);
+        playRound(playerMain, computerMain);
       }, 500);
     });
   }
