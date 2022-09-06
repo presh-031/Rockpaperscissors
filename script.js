@@ -5,6 +5,7 @@ let computerScore = 0;
 let playerScore_El = document.querySelector('.player-score');
 let computerScore_El = document.querySelector('.computer-score');
 let mainResult = document.querySelector('.main-result');
+const mainRule = 'Choose your weapon';
 let result = document.querySelector('.results');
 const rule = 'First to score 5 points wins the game';
 
@@ -146,6 +147,7 @@ function playAgain() {
   playAgainBtn.addEventListener('click', () => {
     overlay.classList.add('hidden');
     modal.classList.add('hidden');
+    mainResult.textContent = mainRule;
     result.textContent = rule;
   });
 }
