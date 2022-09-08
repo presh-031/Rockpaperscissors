@@ -45,7 +45,7 @@ Rock Paper Scissors game project
 
 ## Key-Learning
 
-- This course helped me pratice the importance of state variables, as I had to use certain variables to keep track of the Player and Computer's scores. It is always better to have variables such as these, rather than to always rely on the dom.
+- This project helped me pratice the importance of state variables, as I had to use certain variables to keep track of the Player and Computer's scores. It is always better to have variables such as these, rather than to always rely on the dom.
 
 ## Contact
 
